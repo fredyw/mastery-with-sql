@@ -53,3 +53,9 @@ select title,
        ceil(replacement_cost / rental_rate) as "# rentals to break-even"
 from film
 where ceil(replacement_cost / rental_rate) > 30;
+
+-- Exercise 3.12
+select rental_id, rental_date
+from rental
+where customer_id = '388'
+  and (rental_date >= '2005-01-01' and rental_date < '2006-01-01');
