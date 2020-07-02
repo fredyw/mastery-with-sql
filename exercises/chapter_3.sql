@@ -92,3 +92,9 @@ where return_date >= rental_date
 select rental_id, return_date
 from rental
 where return_date is null;
+
+-- Exercise 3.17
+select title, rating
+from film
+where (rating != 'G' and rating != 'PG')
+   or rating is null;
