@@ -13,3 +13,7 @@ from inventory;
 -- Exercise 3.4
 select actor_id, first_name, last_name, last_update
 from actor;
+
+-- Exercise 3.5
+select first_name, length(first_name)
+from customer
