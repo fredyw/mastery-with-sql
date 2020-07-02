@@ -35,3 +35,8 @@ from film;
 select title, rating
 from film
 where rating = 'G';
+
+-- Exercise 3.9
+select title, length
+from film
+where length > 120;
