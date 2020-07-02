@@ -16,4 +16,4 @@ from actor;
 
 -- Exercise 3.5
 select first_name, length(first_name)
-from customer
+from customer;
