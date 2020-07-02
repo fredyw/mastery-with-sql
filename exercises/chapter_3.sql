@@ -23,3 +23,10 @@ select first_name,
        last_name,
        left(first_name, 1) || left(last_name, 1) as "initial"
 from customer;
+
+-- Exercise 3.7
+select title,
+       rental_rate,
+       replacement_cost,
+       ceil(replacement_cost / rental_rate) as "# rentals to break-even"
+from film
