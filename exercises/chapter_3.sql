@@ -17,3 +17,9 @@ from actor;
 -- Exercise 3.5
 select first_name, length(first_name)
 from customer;
+
+-- Exercise 3.6
+select first_name,
+       last_name,
+       left(first_name, 1) || left(last_name, 1) as "initial"
+from customer;
