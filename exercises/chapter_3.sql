@@ -69,3 +69,22 @@ select title, rental_duration, length
 from film
 where not (length > 60);
 
+-- Exercise 3.14
+-- It returns neither 'G' nor 'PG'.
+select title, rating
+from film
+where rating != 'G'
+  and rating != 'PG';
+
+-- This returns all rows except NULL rating.
+select title, rating
+from film
+where rating != 'G'
+   or rating != 'PG';
+
+-- Exercise 3.15
+select rental_id, rental_date, return_date
+from rental
+where return_date >= rental_date
+   or return_date < rental_date;
+
