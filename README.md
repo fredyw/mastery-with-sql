@@ -1,2 +1,2 @@
 # mastery-with-sql
-Solutions for Master with SQL course
+Solutions for Mastery with SQL course.
