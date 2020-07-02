@@ -40,3 +40,8 @@ where rating = 'G';
 select title, length
 from film
 where length > 120;
+
+-- Exercise 3.10
+select rental_id, rental_date
+from rental
+where rental_date < '2005-06-01';
