@@ -45,3 +45,11 @@ where length > 120;
 select rental_id, rental_date
 from rental
 where rental_date < '2005-06-01';
+
+-- Exercise 3.11
+select title,
+       rental_rate,
+       replacement_cost,
+       ceil(replacement_cost / rental_rate) as "# rentals to break-even"
+from film
+where ceil(replacement_cost / rental_rate) > 30;
