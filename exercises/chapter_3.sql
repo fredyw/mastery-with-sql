@@ -29,4 +29,9 @@ select title,
        rental_rate,
        replacement_cost,
        ceil(replacement_cost / rental_rate) as "# rentals to break-even"
+from film;
+
+-- Exercise 3.8
+select title, rating
 from film
+where rating = 'G';
