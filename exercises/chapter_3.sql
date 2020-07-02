@@ -88,3 +88,7 @@ from rental
 where return_date >= rental_date
    or return_date < rental_date;
 
+-- Exercise 3.16
+select rental_id, return_date
+from rental
+where return_date is null;
