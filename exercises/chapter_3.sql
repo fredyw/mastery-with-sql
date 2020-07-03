@@ -103,3 +103,8 @@ where (rating != 'G' and rating != 'PG')
 select title, rating
 from film
 where rating in ('PG', 'G', 'PG-13');
+
+-- Exercise 3.19
+select title, length
+from film
+where length between 90 and 120;
