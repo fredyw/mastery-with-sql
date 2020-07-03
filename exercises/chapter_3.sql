@@ -135,3 +135,7 @@ select first_name || ' ' || last_name as full_name,
        length(first_name || ' ' || last_name) as len
 from actor
 order by len desc;
+
+-- Exercise 3.25
+-- ORDER BY x, y DESC --> is equivalent to ORDER BY x ASC, y DESC
+-- ORDER BY x DESC, y DESC
