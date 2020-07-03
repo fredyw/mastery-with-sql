@@ -98,3 +98,8 @@ select title, rating
 from film
 where (rating != 'G' and rating != 'PG')
    or rating is null;
+
+-- Exercise 3.18
+select title, rating
+from film
+where rating in ('PG', 'G', 'PG-13');
