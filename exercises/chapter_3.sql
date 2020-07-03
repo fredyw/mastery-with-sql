@@ -129,3 +129,9 @@ order by last_name desc;
 select country_id, city
 from city
 order by country_id, city;
+
+-- Exercise 3.24
+select first_name || ' ' || last_name as full_name,
+       length(first_name || ' ' || last_name) as len
+from actor
+order by len desc;
