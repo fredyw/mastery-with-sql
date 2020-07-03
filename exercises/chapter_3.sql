@@ -139,3 +139,8 @@ order by len desc;
 -- Exercise 3.25
 -- ORDER BY x, y DESC --> is equivalent to ORDER BY x ASC, y DESC
 -- ORDER BY x DESC, y DESC
+
+-- Exercise 3.26
+select rental_id, date_part('hour', rental_date) as "rental hour"
+from rental
+where date_part('hour', rental_date) >= 22;
