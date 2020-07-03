@@ -118,3 +118,9 @@ where title like '%GRAFFITI';
 select title, rating
 from film
 where rating not in ('G', 'PG');
+
+-- Exercise 3.22
+select first_name, last_name
+from customer
+where email is not null
+order by last_name desc;
