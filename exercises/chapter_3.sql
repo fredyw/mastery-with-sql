@@ -108,3 +108,8 @@ where rating in ('PG', 'G', 'PG-13');
 select title, length
 from film
 where length between 90 and 120;
+
+-- Exercise 3.20
+select title
+from film
+where title like '%GRAFFITI';
