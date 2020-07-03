@@ -124,3 +124,8 @@ select first_name, last_name
 from customer
 where email is not null
 order by last_name desc;
+
+-- Exercise 3.23
+select country_id, city
+from city
+order by country_id, city;
