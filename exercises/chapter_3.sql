@@ -150,3 +150,10 @@ select payment_id, payment_date
 from payment
 order by payment_date desc
 limit 3;
+
+-- Exercise 3.28
+select title, length, rating
+from film
+where rating != 'R'
+order by length, title
+limit 4;
