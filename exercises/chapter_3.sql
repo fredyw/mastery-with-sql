@@ -181,3 +181,8 @@ select distinct rating
 from film
 where rating is not null
 order by rating;
+
+-- Exercise 3.32
+select distinct date_part('hour', rental_date) as hour
+from rental
+order by hour;
