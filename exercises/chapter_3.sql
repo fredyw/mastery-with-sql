@@ -157,3 +157,11 @@ from film
 where rating != 'R'
 order by length, title
 limit 4;
+
+-- Exercise 3.29
+select payment_id, amount, payment_date
+from payment
+where payment_date >= '2007-01-01'
+  and payment_date < '2007-02-01'
+order by payment_date desc
+limit 3;
