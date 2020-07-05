@@ -191,3 +191,13 @@ order by hour;
 select distinct rental_duration, rental_rate
 from film
 order by rental_duration;
+
+-- Exercise 3.34
+select first_name
+from actor
+order by last_name;
+
+-- last_name is not in the select list for SELECT DISTINCT.
+-- select distinct first_name
+-- from actor
+-- order by last_name;
