@@ -175,3 +175,9 @@ from (select payment_id, amount, payment_date
       order by payment_date desc
       limit 3) p
 order by payment_date;
+
+-- Exercise 3.31
+select distinct rating
+from film
+where rating is not null
+order by rating;
