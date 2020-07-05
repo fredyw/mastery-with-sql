@@ -144,3 +144,9 @@ order by len desc;
 select rental_id, date_part('hour', rental_date) as "rental hour"
 from rental
 where date_part('hour', rental_date) >= 22;
+
+-- Exercise 3.27
+select payment_id, payment_date
+from payment
+order by payment_date desc
+limit 3;
