@@ -165,3 +165,13 @@ where payment_date >= '2007-01-01'
   and payment_date < '2007-02-01'
 order by payment_date desc
 limit 3;
+
+-- Exercise 3.30
+select p.payment_id, p.amount, p.payment_date
+from (select payment_id, amount, payment_date
+      from payment
+      where payment_date >= '2007-01-01'
+        and payment_date < '2007-02-01'
+      order by payment_date desc
+      limit 3) p
+order by payment_date;
