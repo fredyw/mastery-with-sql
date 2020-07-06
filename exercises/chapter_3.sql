@@ -242,3 +242,18 @@ select first_name, last_name, email
 from customer
 order by random()
 limit 5;
+
+-- Exercise 3.39
+select rental_id, rental_date
+from rental
+where date_part('month', rental_date) = 6
+  and date_part('year', rental_date) = 2005;
+
+select rental_id, rental_date
+from rental
+where rental_date between '2005-06-01 00:00:00' and '2005-06-30 24:00:00';
+
+select rental_id, rental_date
+from rental
+where rental_date >= '2005-06-01 00:00:00'
+  and rental_date <= '2005-06-30 24:00:00';
