@@ -225,3 +225,14 @@ select rental_id,
        end as "return_status"
 from rental
 order by return_status;
+
+-- Exercise 3.37
+select country
+from country
+order by case country
+             when 'Australia' then 0
+             when 'United Kingdom' then 1
+             when 'United States' then 2
+             else 4
+         end,
+         country;
