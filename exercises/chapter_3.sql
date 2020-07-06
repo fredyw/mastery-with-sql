@@ -214,3 +214,14 @@ select distinct rating,
 from film
 where rating is not null
 order by rating;
+
+-- Exercise 3.36
+select rental_id,
+       rental_date,
+       return_date,
+       case
+           when return_date is null then 'Not Returned'
+           else 'Returned'
+       end as "return_status"
+from rental
+order by return_status;
