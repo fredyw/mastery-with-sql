@@ -270,3 +270,8 @@ limit 5;
 select first_name
 from customer
 where first_name like '%A%A%';
+
+-- Exercise 3.42
+select distinct on (customer_id) customer_id, rental_date
+from rental
+order by customer_id, rental_date desc;
