@@ -236,3 +236,9 @@ order by case country
              else 4
          end,
          country;
+
+-- Exercise 3.38
+select first_name, last_name, email
+from customer
+order by random()
+limit 5;
