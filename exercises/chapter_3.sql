@@ -275,3 +275,8 @@ where first_name like '%A%A%';
 select distinct on (customer_id) customer_id, rental_date
 from rental
 order by customer_id, rental_date desc;
+
+-- Exercise 3.43
+select first_name, last_name, email
+from customer
+where email != first_name || '.' || last_name || '@sakilacustomer.org';
