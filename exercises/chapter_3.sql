@@ -265,3 +265,8 @@ where length > 0
   and length is not null
 order by per_minute desc
 limit 5;
+
+-- Exercise 3.41
+select first_name
+from customer
+where first_name like '%A%A%';
