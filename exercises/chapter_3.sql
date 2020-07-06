@@ -201,3 +201,16 @@ order by last_name;
 -- select distinct first_name
 -- from actor
 -- order by last_name;
+
+-- Exercise 3.35
+select distinct rating,
+                case rating
+                    when 'G' then 'General'
+                    when 'PG' then 'Parental Guidance Recommended'
+                    when 'PG-13' then 'Parents Strongly Cautioned'
+                    when 'R' then 'Restricted'
+                    when 'NC-17' then 'Adults Only'
+                end as "rating description"
+from film
+where rating is not null
+order by rating;
