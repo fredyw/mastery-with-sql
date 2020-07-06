@@ -257,3 +257,11 @@ select rental_id, rental_date
 from rental
 where rental_date >= '2005-06-01 00:00:00'
   and rental_date <= '2005-06-30 24:00:00';
+
+-- Exercise 3.40
+select title, rental_rate, length, (rental_rate / length) as per_minute
+from film
+where length > 0
+  and length is not null
+order by per_minute desc
+limit 5;
