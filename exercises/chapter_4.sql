@@ -52,3 +52,15 @@ select count(case
              end) as "gt 3 days",
        count(case when return_date is null then 1 end) as "never returned"
 from rental;
+
+-- Exercise 4.10
+select case
+           when length between 0 and 59 then '0-1hrs'
+           when length between 60 and 119 then '1-2hrs'
+           when length between 120 and 179 then '2-3hrs'
+           else '3hrs+'
+       end as "len",
+       count(*) as "count"
+from film
+group by 1
+order by len;
