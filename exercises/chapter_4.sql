@@ -42,3 +42,13 @@ select date_part('year', payment_date) as "year",
 from payment
 group by date_part('year', payment_date), date_part('month', payment_date), staff_id
 order by year, month;
+
+-- Exercise 4.9
+select count(case
+                 when return_date - rental_date < interval '3 days' then 1
+             end) as "lt 3 days",
+       count(case
+                 when return_date - rental_date >= interval '3 days' then 1
+             end) as "gt 3 days",
+       count(case when return_date is null then 1 end) as "never returned"
+from rental;
