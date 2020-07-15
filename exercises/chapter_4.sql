@@ -80,3 +80,9 @@ select customer_id
 from payment
 group by customer_id
 having bool_and(amount > 2);
+
+-- Exercise 4.14
+select rating, repeat('*', (count(*) / 10)::int) as "count/10"
+from film
+where rating is not null
+group by rating;
