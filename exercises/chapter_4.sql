@@ -74,3 +74,9 @@ select customer_id, avg(return_date - rental_date) as avg_rent_duration
 from rental
 group by customer_id
 order by avg_rent_duration desc;
+
+-- Exercise 4.13
+select customer_id
+from payment
+group by customer_id
+having bool_and(amount > 2);
