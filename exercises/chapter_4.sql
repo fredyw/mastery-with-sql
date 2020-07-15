@@ -15,3 +15,7 @@ from payment;
 -- Exercise 4.4
 select avg(return_date - rental_date) as "avg rental duration"
 from rental;
+
+-- Exercise 4.5
+select sum(amount) as "total"
+from payment;
