@@ -19,3 +19,9 @@ from rental;
 -- Exercise 4.5
 select sum(amount) as "total"
 from payment;
+
+-- Exercise 4.6
+select actor_id, count(*) as "num_films"
+from film_actor
+group by actor_id
+order by num_films desc;
