@@ -25,3 +25,8 @@ select actor_id, count(*) as "num_films"
 from film_actor
 group by actor_id
 order by num_films desc;
+
+select customer_id
+from rental
+group by customer_id
+having count(*) >  40;
