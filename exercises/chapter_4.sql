@@ -64,3 +64,7 @@ select case
 from film
 group by 1
 order by len;
+
+-- Exercise 4.11
+-- avg ignores NULL lengths whereas count(*) will count all the rows including those
+-- with NULL lengths.
