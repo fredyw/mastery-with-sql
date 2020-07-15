@@ -26,7 +26,19 @@ from film_actor
 group by actor_id
 order by num_films desc;
 
+-- Exercise 4.7
 select customer_id
 from rental
 group by customer_id
 having count(*) >  40;
+
+-- Exercise 4.8
+select date_part('year', payment_date) as "year",
+       date_part('month', payment_date) as "month",
+       staff_id,
+       count(*) as "num_payments",
+       sum(amount) "payment_total",
+       avg(amount) "avg_payment_amount"
+from payment
+group by date_part('year', payment_date), date_part('month', payment_date), staff_id
+order by year, month;
