@@ -11,3 +11,7 @@ from customer;
 -- Exercise 4.3
 select count(distinct customer_id)
 from payment;
+
+-- Exercise 4.4
+select avg(return_date - rental_date) as "avg rental duration"
+from rental;
