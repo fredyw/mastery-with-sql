@@ -17,11 +17,11 @@ select avg(return_date - rental_date) as "avg rental duration"
 from rental;
 
 -- Exercise 4.5
-select sum(amount) as "total"
+select sum(amount) as total
 from payment;
 
 -- Exercise 4.6
-select actor_id, count(*) as "num_films"
+select actor_id, count(*) as num_films
 from film_actor
 group by actor_id
 order by num_films desc;
@@ -36,9 +36,9 @@ having count(*) >  40;
 select date_part('year', payment_date) as "year",
        date_part('month', payment_date) as "month",
        staff_id,
-       count(*) as "num_payments",
-       sum(amount) "payment_total",
-       avg(amount) "avg_payment_amount"
+       count(*) as num_payments,
+       sum(amount) payment_total,
+       avg(amount) avg_payment_amount
 from payment
 group by date_part('year', payment_date), date_part('month', payment_date), staff_id
 order by year, month;
@@ -68,3 +68,9 @@ order by len;
 -- Exercise 4.11
 -- avg ignores NULL lengths whereas count(*) will count all the rows including those
 -- with NULL lengths.
+
+-- Exercise 4.12
+select customer_id, avg(return_date - rental_date) as avg_rent_duration
+from rental
+group by customer_id
+order by avg_rent_duration desc;
