@@ -13,3 +13,13 @@ select round(100.0 * count(*) filter (where rating = 'NC-17') / count(*)) as "% 
        round(100.0 * count(*) filter (where rating = 'R') / count(*)) as "% R",
        round(100.0 * count(*) filter (where rating = 'PG-13') / count(*)) as "% PG-13"
 from film;
+
+-- Exercise 5.4
+select int '33'; -- 33
+-- select int '33.3'; -- error
+select cast(33.3 as int); -- 33
+select cast(33.8 as int); -- 33
+select 33::text; -- '33'
+select 'hello'::varchar(2); -- 'he'
+-- select cast(35000 as smallint); -- error
+-- select 12.1::numeric(1, 1); -- error
