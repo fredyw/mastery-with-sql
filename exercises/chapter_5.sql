@@ -67,3 +67,7 @@ from rental
 group by customer_id
 order by hrs_rented desc
 limit 3;
+
+-- Exercise 5.12
+select generate_series('2019-01-01 05:00 UTC'::timestamptz,
+                       '2019-12-01 05:00 UTC'::timestamptz, interval '1 month')
