@@ -48,3 +48,9 @@ select date_trunc('month', payment_date) as "month",
 from payment
 group by month
 order by month;
+
+-- Exercise 5.9
+select count(*)
+from rental
+where date_trunc('day', rental_date) =
+      date_trunc('month', rental_date) + interval '1 month' - interval '1 day;
