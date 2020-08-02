@@ -23,3 +23,8 @@ select 33::text; -- '33'
 select 'hello'::varchar(2); -- 'he'
 -- select cast(35000 as smallint); -- error
 -- select 12.1::numeric(1, 1); -- error
+
+-- Exercise 5.5
+select '2019-03-04 03:30PM America/New_York'::timestamptz,
+       '2019-03-04 03:30PM EST'::timestamptz,
+       '2019-03-04 03:30PM -5'::timestamptz;
