@@ -28,3 +28,9 @@ select 'hello'::varchar(2); -- 'he'
 select '2019-03-04 03:30PM America/New_York'::timestamptz,
        '2019-03-04 03:30PM EST'::timestamptz,
        '2019-03-04 03:30PM -5'::timestamptz;
+
+-- Exercise 5.6
+select title,
+       (rental_duration || ' days')::interval as "duration",
+       (rental_duration || ' days')::interval + interval '1 day' as "duration + 1"
+from film;
