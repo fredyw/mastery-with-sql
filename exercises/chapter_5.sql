@@ -54,3 +54,8 @@ select count(*)
 from rental
 where date_trunc('day', rental_date) =
       date_trunc('month', rental_date) + interval '1 month' - interval '1 day';
+
+-- Exercise 5.10
+select count(*)
+from film
+where title like ' %' or title like '% ';
