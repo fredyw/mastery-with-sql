@@ -59,3 +59,11 @@ where date_trunc('day', rental_date) =
 select count(*)
 from film
 where title like ' %' or title like '% ';
+
+-- Exercise 5.11
+select customer_id,
+       round(date_part('epoch', sum(return_date - rental_date)) / 3600) as hrs_rented
+from rental
+group by customer_id
+order by hrs_rented desc
+limit 3;
