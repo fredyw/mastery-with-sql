@@ -76,3 +76,8 @@ select generate_series('2019-01-01 05:00 UTC'::timestamptz,
 select first_name, length(first_name) - length(replace(first_name, 'A', '')) as count
 from customer
 order by count desc;
+
+-- Exercise 5.14
+select sum(amount) as "total $"
+from payment
+where extract('dow' from payment_date) in (0, 6); -- Saturday
