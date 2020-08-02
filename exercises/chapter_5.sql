@@ -34,3 +34,10 @@ select title,
        (rental_duration || ' days')::interval as "duration",
        (rental_duration || ' days')::interval + interval '1 day' as "duration + 1"
 from film;
+
+-- Exercise 5.7
+select date_part('hour', rental_date) as hr,
+       count(*) as count
+from rental
+group by date_part('hour', rental_date)
+order by hr;
