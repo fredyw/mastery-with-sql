@@ -39,5 +39,12 @@ from film;
 select date_part('hour', rental_date) as hr,
        count(*) as count
 from rental
-group by date_part('hour', rental_date)
+group by hr
 order by hr;
+
+-- Exercise 5.8
+select date_trunc('month', payment_date) as "month",
+       sum(amount) as total
+from payment
+group by month
+order by month;
