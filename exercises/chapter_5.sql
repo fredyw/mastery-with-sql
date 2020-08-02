@@ -70,4 +70,9 @@ limit 3;
 
 -- Exercise 5.12
 select generate_series('2019-01-01 05:00 UTC'::timestamptz,
-                       '2019-12-01 05:00 UTC'::timestamptz, interval '1 month')
+                       '2019-12-01 05:00 UTC'::timestamptz, interval '1 month');
+
+-- Exercise 5.13
+select first_name, length(first_name) - length(replace(first_name, 'A', '')) as count
+from customer
+order by count desc;
