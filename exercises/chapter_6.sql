@@ -16,3 +16,14 @@ select s.store_id, st.first_name || ' ' || st.last_name as "Manager", st.email
 from store s
      inner join staff st
                 on s.manager_staff_id = st.staff_id;
+
+-- Exercise 6.3
+select f.film_id, f.title, count(*) as count
+from rental r
+     inner join inventory i
+                on r.inventory_id = i.inventory_id
+     inner join film f
+                on f.film_id = i.film_id
+group by f.film_id, f.title
+order by count desc
+limit 3;
