@@ -10,3 +10,9 @@ from rental r
 where c.first_name = 'PETER'
   and c.last_name = 'MENARD'
 order by r.rental_date desc;
+
+-- Exercise 6.2
+select s.store_id, st.first_name || ' ' || st.last_name as "Manager", st.email
+from store s
+     inner join staff st
+                on s.manager_staff_id = st.staff_id;
