@@ -27,3 +27,17 @@ from rental r
 group by f.film_id, f.title
 order by count desc
 limit 3;
+
+-- Exercise 6.4
+select r.customer_id,
+       count(distinct f.film_id) as num_films,
+       count(distinct fa.actor_id) as num_actors
+from rental r
+     inner join inventory i
+                on r.inventory_id = i.inventory_id
+     inner join film f
+                on f.film_id = i.film_id
+     inner join film_actor fa
+                on fa.film_id = f.film_id
+group by r.customer_id
+order by r.customer_id;
