@@ -41,3 +41,16 @@ from rental r
                 on fa.film_id = f.film_id
 group by r.customer_id
 order by r.customer_id;
+
+-- Exercise 6.5
+select f.title, l.name as "language"
+from film f
+     inner join
+     language l
+     on f.language_id = l.language_id;
+
+select f.title, l.name as "language"
+from film f
+     inner join
+     language l
+     using (language_id);
