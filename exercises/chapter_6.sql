@@ -54,3 +54,9 @@ from film f
      inner join
      language l
      using (language_id);
+
+-- Exercise 6.6
+select f.title
+from film f
+     left outer join inventory i on f.film_id = i.film_id
+where i.store_id is null;
