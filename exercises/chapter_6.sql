@@ -67,3 +67,11 @@ from film f
      left outer join inventory i on f.film_id = i.film_id
 group by f.film_id, f.title
 order by count;
+
+-- Exercise 6.8
+select c.customer_id, count(r.rental_id) as num_rented
+from customer c
+     left outer join rental r on c.customer_id = r.customer_id and
+                                 r.rental_date::timestamp::date = '2005-05-24'
+group by c.customer_id
+order by num_rented desc, c.customer_id;
