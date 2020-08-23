@@ -75,3 +75,12 @@ from customer c
                                  r.rental_date::timestamp::date = '2005-05-24'
 group by c.customer_id
 order by num_rented desc, c.customer_id;
+
+-- Exercise 6.9
+select f.film_id, s.store_id, count(i.inventory_id) as stock
+from film f
+     cross join store s
+     left join inventory i
+               on f.film_id = i.film_id and s.store_id = i.store_id
+group by f.film_id, s.store_id
+order by stock, f.film_id, s.store_id;
