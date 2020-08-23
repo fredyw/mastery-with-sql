@@ -93,3 +93,14 @@ from generate_series('2005-01-01 00:00:00'::timestamp,
      left join rental r
                on date_trunc('month', r.rental_date) = t
 group by t;
+
+-- Exercise 6.11
+select r1.customer_id
+from rental r1
+     inner join rental r2
+                on r1.customer_id = r2.customer_id and
+                   r1.rental_date < r2.rental_date
+     inner join inventory i1 on r1.inventory_id = i1.inventory_id
+     inner join inventory i2 on r2.inventory_id = i2.inventory_id
+where i1.film_id = 97
+  and i2.film_id = 841;
