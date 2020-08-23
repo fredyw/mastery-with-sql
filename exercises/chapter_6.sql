@@ -84,3 +84,12 @@ from film f
                on f.film_id = i.film_id and s.store_id = i.store_id
 group by f.film_id, s.store_id
 order by stock, f.film_id, s.store_id;
+
+-- Exercise 6.10
+select t, count(r.rental_id)
+from generate_series('2005-01-01 00:00:00'::timestamp,
+                     '2005-12-01 00:00:00'::timestamp,
+                     '1 month') t
+     left join rental r
+               on date_trunc('month', r.rental_date) = t
+group by t;
