@@ -31,3 +31,17 @@ where i.film_id = (select i.film_id
 select country
 from country
 where (select count(*) from city where city.country_id = country.country_id) > 15;
+
+-- Exercise 7.5
+select c.customer_id,
+       c.first_name,
+       c.last_name,
+       (select i.store_id
+        from rental r
+             inner join inventory i on
+            r.inventory_id = i.inventory_id
+        where c.customer_id = r.customer_id
+        group by i.store_id
+        order by count(*) desc
+        limit 1) as "Favorite Store"
+from customer c;
