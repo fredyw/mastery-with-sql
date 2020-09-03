@@ -45,3 +45,16 @@ select c.customer_id,
         order by count(*) desc
         limit 1) as "Favorite Store"
 from customer c;
+
+-- Exercise 7.6
+select c.first_name,
+       c.last_name,
+       case
+           when exists(select *
+                       from rental r
+                            inner join inventory i on r.inventory_id = i.inventory_id
+                       where i.store_id != c.store_id
+                         and c.customer_id = r.customer_id) > 0 then 'Y'
+           else 'N'
+       end as "HasRentedOtherStore"
+from customer c;
