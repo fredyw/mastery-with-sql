@@ -26,3 +26,8 @@ where i.film_id = (select i.film_id
                    group by i.film_id
                    order by count(*), i.film_id
                    limit 1);
+
+-- Exercise 7.4
+select country
+from country
+where (select count(*) from city where city.country_id = country.country_id) > 15;
