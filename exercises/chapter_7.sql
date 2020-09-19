@@ -64,3 +64,11 @@ select first_name, last_name
 from customer
      cross join (values (1), (2), (3), (4)) as t
 order by customer_id;
+
+-- Exercise 7.8
+select to_char(r.rent_day, 'Day') as day_name, round(avg(r.count)) as average
+from (select date_trunc('day', rental_date) rent_day, count(*)
+      from rental
+      group by rent_day) r
+group by day_name
+order by average desc;
