@@ -58,3 +58,9 @@ select c.first_name,
            else 'N'
        end as "HasRentedOtherStore"
 from customer c;
+
+-- Exercise 7.7
+select first_name, last_name
+from customer
+     cross join (values (1), (2), (3), (4)) as t
+order by customer_id;
