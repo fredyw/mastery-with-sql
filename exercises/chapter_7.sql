@@ -72,3 +72,16 @@ from (select date_trunc('day', rental_date) rent_day, count(*)
       group by rent_day) r
 group by day_name
 order by average desc;
+
+-- Exercise 7.9
+select c.first_name, c.last_name, d.title, d.rental_date
+from customer c left join lateral
+     (select r.customer_id, f.title, r.rental_date
+      from rental r
+           inner join inventory i on r.inventory_id = i.inventory_id
+           inner join film f on i.film_id = f.film_id
+      where r.customer_id = c.customer_id and
+            f.rating = 'PG'
+      order by rental_date
+      limit 1) d
+     on c.customer_id = d.customer_id;
