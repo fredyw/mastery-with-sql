@@ -135,3 +135,17 @@ group by ctry.country
 
 order by num_customers desc
 limit 3;
+
+-- Exercise 7.14
+with monthly_amounts as (
+    select date_trunc('month', payment_date) as month, sum(amount) as income
+    from payment
+    group by month
+)
+select ma1.month,
+       ma1.income as amount,
+       (select sum(ma2.income)
+        from monthly_amounts ma2
+        where ma2.month <= ma1.month) as cumamount
+from monthly_amounts ma1
+order by ma1.month;
