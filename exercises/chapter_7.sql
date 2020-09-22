@@ -85,3 +85,17 @@ from customer c left join lateral
       order by rental_date
       limit 1) d
      on c.customer_id = d.customer_id;
+
+-- Exercise 7.10
+with rental_detail as (
+    select *
+    from rental r
+         inner join inventory i on r.inventory_id = i.inventory_id
+         inner join film f on i.film_id = f.film_id
+)
+select r1.customer_id
+from rental_detail r1
+     inner join rental_detail r2 on r1.customer_id = r2.customer_id
+where r1.rental_date < r2.rental_date
+  and r1.title = 'BRIDE INTRIGUE'
+  and r2.title = 'STAR OPERATION';
