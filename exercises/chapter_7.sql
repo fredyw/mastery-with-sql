@@ -122,3 +122,16 @@ where date_part('year', rental_date) = 2005
   and customer_id not in (select customer_id
                           from rental
                           where date_part('year', rental_date) = 2006);
+
+-- Exercise 7.13
+select ctry.country,
+       count(*) as num_customers,
+       round(100.0 * count(*) / (select count(*) from customer)) as percent
+from customer cust
+     inner join address a on cust.address_id = a.address_id
+     inner join city ct on a.city_id = ct.city_id
+     inner join country ctry on ct.country_id = ctry.country_id
+group by ctry.country
+
+order by num_customers desc
+limit 3;
