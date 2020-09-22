@@ -99,3 +99,18 @@ from rental_detail r1
 where r1.rental_date < r2.rental_date
   and r1.title = 'BRIDE INTRIGUE'
   and r2.title = 'STAR OPERATION';
+
+-- Exercise 7.11
+with monthly_amounts as (
+    select date_trunc('month', payment_date) as month, sum(amount) as income
+    from payment
+    group by month
+)
+select current.month,
+       current.income,
+       previous.income as "prev month income",
+       current.income - previous.income as "change"
+from monthly_amounts as current
+     left join monthly_amounts as previous
+               on previous.month = current.month - interval '1 month'
+order by month;
