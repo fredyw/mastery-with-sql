@@ -114,3 +114,11 @@ from monthly_amounts as current
      left join monthly_amounts as previous
                on previous.month = current.month - interval '1 month'
 order by month;
+
+-- Exercise 7.12
+select distinct customer_id
+from rental
+where date_part('year', rental_date) = 2005
+  and customer_id not in (select customer_id
+                          from rental
+                          where date_part('year', rental_date) = 2006);
