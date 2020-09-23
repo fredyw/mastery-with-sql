@@ -149,3 +149,23 @@ select ma1.month,
         where ma2.month <= ma1.month) as cumamount
 from monthly_amounts ma1
 order by ma1.month;
+
+-- Exercise 7.15
+with series as (
+    select generate_series(min(rental_id), max(rental_id)) as rental_id
+    from rental
+)
+select s.rental_id as id
+from series s
+     left join rental r
+               on r.rental_id = s.rental_id
+where r.rental_id is null;
+
+select s.id
+from generate_series(
+    (select min(rental_id) from rental),
+    (select max(rental_id) from rental)) as s(id)
+where not exists
+    (select *
+     from rental as r
+     where r.rental_id = s.id);
