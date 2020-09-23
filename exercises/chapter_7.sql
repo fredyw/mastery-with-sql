@@ -169,3 +169,24 @@ where not exists
     (select *
      from rental as r
      where r.rental_id = s.id);
+
+-- Exercise 7.16
+with last_three_payment as (
+    select payment_id, amount, payment_date
+    from payment
+    where date_trunc('month', payment_date) = '2007-01-01 00:00:00.000000'
+    order by payment_date desc
+    limit 3
+)
+select *
+from last_three_payment
+order by payment_date;
+
+select payment_id, amount, payment_date
+from (select payment_id, amount, payment_date
+      from payment
+      where payment_date >= '2007-01-01'
+        and payment_date < '2007-02-01'
+      order by payment_date desc
+      limit 3) as p
+order by payment_date asc;
