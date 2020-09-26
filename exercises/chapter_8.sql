@@ -22,3 +22,10 @@ from rental r
 where i.film_id in (select film_id
                     from rent_counts
                     where rank = 1);
+
+-- Exercise 8.3
+select rating
+from (select rating,
+             row_number() over (partition by rating) as row_number
+      from film) t
+where row_number = 1 and rating is not null;
