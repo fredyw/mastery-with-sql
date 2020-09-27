@@ -37,6 +37,7 @@ select customer_id,
        avg(return_date - rental_date) over (partition by customer_id)
 from rental;
 
+-- Exercise 8.5
 select month,
        amount,
        sum(amount) over (order by month) as running_total
