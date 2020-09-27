@@ -36,3 +36,12 @@ select customer_id,
        return_date - rental_date as rent_duration,
        avg(return_date - rental_date) over (partition by customer_id)
 from rental;
+
+select month,
+       amount,
+       sum(amount) over (order by month) as running_total
+from (select date_trunc('month', payment_date) as month,
+             sum(amount) as amount
+      from payment
+      group by month) t
+order by month;
