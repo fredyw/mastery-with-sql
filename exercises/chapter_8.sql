@@ -29,3 +29,10 @@ from (select rating,
              row_number() over (partition by rating) as row_number
       from film) t
 where row_number = 1 and rating is not null;
+
+-- Exercise 8.4
+select customer_id,
+       rental_id,
+       return_date - rental_date as rent_duration,
+       avg(return_date - rental_date) over (partition by customer_id)
+from rental;
