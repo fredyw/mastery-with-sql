@@ -46,3 +46,22 @@ from (select date_trunc('month', payment_date) as month,
       from payment
       group by month) t
 order by month;
+
+-- Exercise 8.6
+with earning_per_rating as (
+    select f.title,
+           f.rating,
+           f.rental_rate * count(*) as income,
+           rank()
+           over (partition by f.rating order by f.rental_rate * count(*) desc) as rank
+    from rental r
+         inner join inventory i on r.inventory_id = i.inventory_id
+         inner join film f on f.film_id = i.film_id
+    where f.rating is not null
+    group by f.film_id
+)
+select title,
+       rating,
+       income
+from earning_per_rating
+where rank <= 3;
