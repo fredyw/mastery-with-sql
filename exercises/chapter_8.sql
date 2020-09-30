@@ -65,3 +65,23 @@ select title,
        income
 from earning_per_rating
 where rank <= 3;
+
+-- Exercise 8.7
+with row_numbers as (
+    select row_number() over (order by rental_id) as row_number
+    from rental
+)
+select row_number as missing_from, row_number as missing_to
+from row_numbers rn
+     left join rental r on rn.row_number = r.rental_id
+where r.rental_id is null;
+
+with t as (
+    select rental_id as current,
+           lead(rental_id) over (order by rental_id) as next
+    from rental
+)
+select current + 1 as missing_from,
+       next - 1 as missing_to
+from t
+where next - current > 1;
