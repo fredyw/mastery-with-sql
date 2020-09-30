@@ -85,3 +85,16 @@ select current + 1 as missing_from,
        next - 1 as missing_to
 from t
 where next - current > 1;
+
+-- Exercise 8.8
+with rental_dates as (
+    select customer_id,
+           rental_date,
+           lag(rental_date)
+           over (partition by customer_id order by rental_date) as prev_rental_date
+    from rental
+)
+select customer_id, max(rental_date - prev_rental_date)
+from rental_dates
+group by customer_id
+order by customer_id;
