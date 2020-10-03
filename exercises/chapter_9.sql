@@ -20,3 +20,22 @@ intersect
     select first_name, last_name
     from actor
 );
+
+-- Exercise 9.3
+(
+    select film_id
+    from film_actor
+    where actor_id = 49
+)
+intersect
+(
+    select film_id
+    from film_actor
+    where actor_id = 152
+)
+intersect
+(
+    select film_id
+    from film_actor
+    where actor_id = 180
+);
