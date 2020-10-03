@@ -9,3 +9,14 @@ union
     from payment
 )
 order by interaction_date;
+
+-- Exercise 9.2
+(
+    select first_name, last_name
+    from customer
+)
+intersect
+(
+    select first_name, last_name
+    from actor
+);
