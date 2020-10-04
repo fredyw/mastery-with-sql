@@ -39,3 +39,14 @@ intersect
     from film_actor
     where actor_id = 180
 );
+
+-- Exercise 9.3
+(
+    select generate_series(min(rental_id), max(rental_id)) as id
+    from rental
+)
+except
+(
+    select rental_id as id
+    from rental
+);
