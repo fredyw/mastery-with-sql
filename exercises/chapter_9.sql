@@ -40,7 +40,7 @@ intersect
     where actor_id = 180
 );
 
--- Exercise 9.3
+-- Exercise 9.4
 (
     select generate_series(min(rental_id), max(rental_id)) as id
     from rental
@@ -50,3 +50,17 @@ except
     select rental_id as id
     from rental
 );
+
+-- Exercise 9.5
+(
+    select c.first_name, c.last_name
+    from rental r inner join customer c on c.customer_id = r.customer_id
+    where date_part('isodow', rental_date) = 6
+)
+except
+(
+    select c.first_name, c.last_name
+    from rental r inner join customer c on c.customer_id = r.customer_id
+    where date_part('isodow', rental_date) = 7
+)
+order by first_name;
