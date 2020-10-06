@@ -64,3 +64,15 @@ except
     where date_part('isodow', rental_date) = 7
 )
 order by first_name;
+
+-- Exercise 9.6
+(
+    select rental_date::date as interaction_date, 'rental' as type
+    from rental
+)
+union
+(
+    select payment_date::date as interaction_date, 'payment' as type
+    from payment
+)
+order by interaction_date;
