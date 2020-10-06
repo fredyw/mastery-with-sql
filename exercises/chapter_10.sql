@@ -16,3 +16,6 @@ create table beach.equipment (
     description text,
     replacement_cost numeric(7, 2)
 );
+
+-- Exercise 10.4
+alter table beach.equipment add missing boolean;
