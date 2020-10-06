@@ -93,3 +93,6 @@ intersect
          inner join city ct on ct.city_id = a.city_id
          inner join country c on c.country_id = ct.country_id
 );
+
+-- Exercise 9.8
+-- (A union B) except (A intersect B)
