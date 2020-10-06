@@ -29,3 +29,12 @@ create table beach.customers (
     phone text,
     create_date date
 );
+
+-- Exercise 10.6
+create table beach.equipment (
+    equipment_id bigserial primary key,
+    item_type text,
+    description text,
+    replacement_cost numeric(7, 2),
+    missing boolean
+);
