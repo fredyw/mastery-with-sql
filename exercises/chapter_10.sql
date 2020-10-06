@@ -19,3 +19,13 @@ create table beach.equipment (
 
 -- Exercise 10.4
 alter table beach.equipment add missing boolean;
+
+-- Exercise 10.5
+create table beach.customers (
+    customer_id bigint generated always as identity primary key,
+    email text,
+    first_name text,
+    last_name text,
+    phone text,
+    create_date date
+);
