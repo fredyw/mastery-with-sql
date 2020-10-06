@@ -38,3 +38,12 @@ create table beach.equipment (
     replacement_cost numeric(7, 2),
     missing boolean
 );
+
+-- Exercise 10.7
+create table beach.rentals (
+    customer_id bigint,
+    equipment_id bigint,
+    rental_date date,
+    return_date date,
+    primary key (customer_id, equipment_id, rental_date)
+);
