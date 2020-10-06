@@ -9,3 +9,10 @@ create table beach.customers (
     phone text,
     date date
 );
+
+-- Exercise 10.3
+create table beach.equipment (
+    item_type text,
+    description text,
+    replacement_cost numeric(7, 2)
+);
