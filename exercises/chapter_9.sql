@@ -76,3 +76,20 @@ union
     from payment
 )
 order by interaction_date;
+
+-- Exercise 9.7
+(
+    select country
+    from staff s
+         inner join address a on s.address_id = a.address_id
+         inner join city ct on ct.city_id = a.city_id
+         inner join country c on c.country_id = ct.country_id
+)
+intersect
+(
+    select country
+    from customer cr
+         inner join address a on cr.address_id = a.address_id
+         inner join city ct on ct.city_id = a.city_id
+         inner join country c on c.country_id = ct.country_id
+);
