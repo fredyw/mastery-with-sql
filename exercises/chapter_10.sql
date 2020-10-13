@@ -67,3 +67,12 @@ create table beach.customers (
      create_date date default current_date,
      check (phone is not null or phone is not null)
 );
+
+-- Exercise 10.10
+create table beach.equipment (
+     equipment_id bigserial primary key,
+     item_type text not null,
+     description text,
+     replacement_cost numeric(7, 2) check (replacement_cost >= 0),
+     missing boolean not null default false
+);
