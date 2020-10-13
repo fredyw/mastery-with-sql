@@ -56,3 +56,14 @@ create table beach.rentals (
     return_date date,
     primary key (customer_id, equipment_id, rental_date)
 );
+
+-- Exercise 10.9
+create table beach.customers (
+     customer_id bigint generated always as identity primary key,
+     email text unique,
+     first_name text not null,
+     last_name text not null,
+     phone text unique,
+     create_date date default current_date,
+     check (phone is not null or phone is not null)
+);
