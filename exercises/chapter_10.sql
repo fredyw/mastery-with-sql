@@ -86,3 +86,27 @@ create table beach.equipment (
 -- tradeoff is requiring join although with proper indexing it should not matter that
 -- much. PostgreSQL supports ALTER TYPE name ADD VALUE to add a new value although
 -- removing a value still requires dropping the type.
+
+-- Exercise 10.13
+select count(*)
+from beach.equipment
+where item_type = 'Single Kayak'
+  and missing = false
+  and equipment_id not in
+      (select equipment_id
+       from beach.rentals
+       where return_date is null);
+
+-- Exercise 10.14
+create table beach.rentals (
+    rental_id bigserial primary key,
+    customer_id bigint references beach.customers (customer_id),
+    rental_date date,
+    return_date date
+);
+
+create table beach.rental_details (
+    rental_id bigint references beach.rentals (rental_id),
+    equipment_id bigint references beach.equipment (equipment_id),
+    primary key (rental_id, equipment_id)
+);
