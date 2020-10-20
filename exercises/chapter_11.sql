@@ -13,3 +13,15 @@ copy (
 )
 to '/tmp/ch11-2.txt'
 with (format csv, header true);
+
+-- Exercise 11.3
+copy (
+    select 'test'::text,
+           33::numeric,
+           33.3, 33.2999992::real,
+           true::boolean,
+           '2019-05-12'::date,
+           '2019-05-12 15:25:11.644876+10'::timestamptz,
+           interval '1 day'
+)
+to '/tmp/ch11-3.txt';
