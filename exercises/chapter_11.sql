@@ -34,3 +34,19 @@ values (1, 'John', 'Henry', 1, 1)
 returning *;
 
 rollback;
+
+-- Exercise 11.5
+begin;
+
+create table rental_stats (
+    date date,
+    num_rentals int
+);
+
+insert into rental_stats
+select rental_date::date as rental_day, count(*)
+from rental
+group by rental_day
+order by rental_day;
+
+rollback;
