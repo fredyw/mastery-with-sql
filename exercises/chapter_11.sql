@@ -73,3 +73,13 @@ where film_id in (select i.film_id
                   limit 20);
 
 rollback;
+
+-- Exercise 11.8
+begin;
+
+alter table film add column length_hrs numeric(2, 1);
+
+update film set length_hrs = film.length_hrs / 60.0
+returning *;
+
+rollback;
