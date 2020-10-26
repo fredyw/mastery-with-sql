@@ -59,3 +59,17 @@ set email = lower(first_name) || '.' || lower(last_name) || '@sakilacustomer.org
 returning *;
 
 rollback;
+
+-- Exercise 11.7
+begin;
+
+update film
+set rental_rate = rental_rate * 1.1
+where film_id in (select i.film_id
+                  from rental
+                       inner join inventory i on rental.inventory_id = i.inventory_id
+                  group by i.film_id
+                  order by count(*) desc
+                  limit 20);
+
+rollback;
