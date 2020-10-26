@@ -25,3 +25,12 @@ copy (
            interval '1 day'
 )
 to '/tmp/ch11-3.txt';
+
+-- Exercise 11.4
+begin;
+
+insert into customer(store_id, first_name, last_name, address_id, active)
+values (1, 'John', 'Henry', 1, 1)
+returning *;
+
+rollback;
