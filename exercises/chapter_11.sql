@@ -50,3 +50,12 @@ group by rental_day
 order by rental_day;
 
 rollback;
+
+-- Exercise 11.6
+begin;
+
+update customer
+set email = lower(first_name) || '.' || lower(last_name) || '@sakilacustomer.org'
+returning *;
+
+rollback;
