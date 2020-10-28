@@ -83,3 +83,12 @@ update film set length_hrs = film.length_hrs / 60.0
 returning *;
 
 rollback;
+
+-- Exercise 11.9
+begin;
+
+delete from payment
+where amount = 0
+returning *;
+
+rollback;
