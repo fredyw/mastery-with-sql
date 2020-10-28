@@ -100,3 +100,19 @@ delete from language
 where language_id not in (select distinct film.language_id from film);
 
 rollback;
+
+-- Exercise 11.11
+begin;
+
+update customer
+set activebool =
+        case
+            when exists
+                (select *
+                 from rental
+                 where customer.customer_id = rental.customer_id
+                   and rental_date >= '2006-01-01') then true
+            else false
+        end;
+
+rollback;
