@@ -140,3 +140,19 @@ on conflict (store_id, film_id)
     stock_count = excluded.stock_count;
 
 rollback;
+
+-- Exercise 11.3
+begin;
+
+with deleted_rentals as (
+    delete from rental
+        where rental_id in (
+            select distinct on (customer_id) rental_id
+            from rental
+            order by customer_id, rental_date)
+        returning rental_id
+)
+delete from payment
+where rental_id in (select rental_id from deleted_rentals);
+
+rollback;
