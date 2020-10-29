@@ -116,3 +116,27 @@ set activebool =
         end;
 
 rollback;
+
+-- Exercise 11.2
+begin;
+
+create table inventory_stats (
+    store_id smallint references store (store_id),
+    film_id smallint references film (film_id),
+    stock_count int not null,
+    primary key (store_id, film_id)
+);
+
+insert into inventory_stats(store_id, film_id, stock_count)
+select s.store_id, f.film_id, count(i.inventory_id)
+from film as f
+     cross join store as s
+     left join inventory as i
+               on f.film_id = i.film_id
+                   and s.store_id = i.store_id
+group by f.film_id, s.store_id
+on conflict (store_id, film_id)
+    do update set
+    stock_count = excluded.stock_count;
+
+rollback;
