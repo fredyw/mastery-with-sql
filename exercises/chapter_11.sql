@@ -141,7 +141,7 @@ on conflict (store_id, film_id)
 
 rollback;
 
--- Exercise 11.3
+-- Exercise 11.13
 begin;
 
 with deleted_rentals as (
