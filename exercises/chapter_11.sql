@@ -117,7 +117,7 @@ set activebool =
 
 rollback;
 
--- Exercise 11.2
+-- Exercise 11.12
 begin;
 
 create table inventory_stats (
