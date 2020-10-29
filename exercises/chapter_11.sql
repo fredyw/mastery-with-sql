@@ -156,3 +156,22 @@ delete from payment
 where rental_id in (select rental_id from deleted_rentals);
 
 rollback;
+
+-- Exercise 11.14
+begin;
+
+create table mpaa_ratings (
+    rating text primary key
+);
+
+insert into mpaa_ratings (select unnest(enum_range(null::mpaa_rating)));
+
+alter table film
+    alter column rating drop default,
+    alter column rating type text,
+    alter column rating set default 'G',
+    add foreign key (rating) references mpaa_ratings(rating);
+
+drop type mpaa_rating;
+
+rollback;
