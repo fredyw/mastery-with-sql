@@ -15,3 +15,11 @@ from customer as c
                using (customer_id)
 group by c.customer_id
 order by c.customer_id;
+
+-- Exercise 12.3
+create view vw_monthly_totals as (
+    select date_trunc('month', payment_date) as month, sum(amount) as total
+    from payment
+    group by month
+    order by month
+);
