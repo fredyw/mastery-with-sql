@@ -39,3 +39,24 @@ select month,
        lag(total) over (order by month) as "prev month income",
        total - lag(total) over (order by month) as "change"
 from vw_monthly_totals;
+
+-- Exercise 12.5
+begin;
+
+create materialized view mvw_rental_film as
+select *
+from vw_rental_film;
+
+(
+    select * from vw_rental_film
+    except
+    select * from mvw_rental_film
+)
+union all
+(
+    select * from mvw_rental_film
+    except
+    select * from vw_rental_film
+);
+
+rollback;
