@@ -23,3 +23,19 @@ create view vw_monthly_totals as (
     group by month
     order by month
 );
+
+-- Exercise 12.4
+with montly_totals as (
+    select month, total as income, rank() over (order by month) as rank
+    from vw_monthly_totals
+)
+select m1.month,
+       m1.income, m2.income as "prev month income",
+       (m1.income - m2.income) as "change"
+from montly_totals m1 left join montly_totals m2 on m1.rank = m2.rank + 1;
+
+select month,
+       total as income,
+       lag(total) over (order by month) as "prev month income",
+       total - lag(total) over (order by month) as "change"
+from vw_monthly_totals;
