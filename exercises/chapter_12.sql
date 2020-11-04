@@ -60,3 +60,16 @@ union all
 );
 
 rollback;
+
+-- Exercise 12.6
+create or replace function unreturned_rentals (
+    p_customer_id int
+)
+returns int
+language sql
+as $$
+    select count(*)::int
+    from rental
+    where return_date is null
+      and customer_id = p_customer_id
+$$;
