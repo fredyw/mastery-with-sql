@@ -73,3 +73,8 @@ as $$
     where return_date is null
       and customer_id = p_customer_id
 $$;
+
+-- Exercise 12.7
+select customer_id,
+       unreturned_rentals(customer_id) as unreturned_rentals
+from customer;
