@@ -78,3 +78,13 @@ $$;
 select customer_id,
        unreturned_rentals(customer_id) as unreturned_rentals
 from customer;
+
+create or replace function random (
+    p_low int,
+    p_high int
+)
+returns int
+language sql
+as $$
+    select floor(random() * (p_high - p_low + 1))::int + p_low;
+$$;
