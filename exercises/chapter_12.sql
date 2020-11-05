@@ -79,6 +79,7 @@ select customer_id,
        unreturned_rentals(customer_id) as unreturned_rentals
 from customer;
 
+-- Exercise 12.8
 create or replace function random (
     p_low int,
     p_high int
@@ -89,7 +90,7 @@ as $$
     select floor(random() * (p_high - p_low + 1))::int + p_low;
 $$;
 
--- Exercise 12.8
+-- Exercise 12.9
 create or replace function apply_discount (
     p_customer_id int,
     p_film_id int
