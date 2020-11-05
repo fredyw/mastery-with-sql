@@ -112,3 +112,25 @@ as $$
         return unreturned_rentals(p_customer_id) = 0 and count_film_rented = 0;
     end;
 $$;
+
+-- Exercise 12.10
+create or replace function fizzbizz(p_n int)
+returns table (n int, fb text)
+language plpgsql
+as $$
+    begin
+        for i in 1..p_n loop
+            n := i;
+            if n % 3 = 0 and n % 5 = 0 then
+                fb :=  'FizzBuzz';
+            elsif n % 3 = 0 then
+                fb := 'Fizz';
+            elsif n % 5 = 0 then
+                fb :=  'Buzz';
+            else
+                fb := n::text;
+            end if;
+            return next;
+        end loop;
+    end;
+$$;
