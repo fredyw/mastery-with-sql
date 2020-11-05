@@ -88,3 +88,26 @@ language sql
 as $$
     select floor(random() * (p_high - p_low + 1))::int + p_low;
 $$;
+
+-- Exercise 12.8
+create or replace function apply_discount (
+    p_customer_id int,
+    p_film_id int
+)
+returns bool
+language plpgsql
+as $$
+    declare
+        count_film_rented int;
+    begin
+        select count(*)
+        into count_film_rented
+        from rental r
+             inner join inventory i on r.inventory_id = i.inventory_id
+             inner join film f on i.film_id = f.film_id
+        where r.customer_id = p_customer_id
+          and f.film_id = p_film_id;
+
+        return unreturned_rentals(p_customer_id) = 0 and count_film_rented = 0;
+    end;
+$$;
